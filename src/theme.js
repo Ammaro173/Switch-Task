@@ -1,7 +1,7 @@
 import { createTheme } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
 
-// Create a theme instance.
+// Create a theme instance,  then we can use the palette names directly with the component
 const theme = createTheme({
 	palette: {
 		primary: {
@@ -12,6 +12,9 @@ const theme = createTheme({
 		},
 		error: {
 			main: red.A400,
+		},
+		info: {
+			main: red.A200,
 		},
 	},
 });
