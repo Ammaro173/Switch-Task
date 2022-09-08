@@ -73,6 +73,7 @@ export default function ProductHero() {
 
 				<ControlledOpenSelect books={booksCount} handleBooks={handleBooks} />
 			</ProductHeroLayout>
+
 			{show && <BooksRenderList data={data} />}
 		</>
 	);

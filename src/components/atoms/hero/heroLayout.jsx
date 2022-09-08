@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
-
+import Link from '../../../Link';
 const ProductHeroLayoutRoot = styled('section')(({ theme }) => ({
 	color: theme.palette.common.white,
 	position: 'relative',
 	display: 'flex',
 	alignItems: 'center',
 	[theme.breakpoints.up('sm')]: {
-		height: '80vh',
+		height: '65vh',
 		minHeight: 500,
-		maxHeight: 1300,
+		maxHeight: 1200,
 	},
 }));
 
@@ -56,6 +56,9 @@ function ProductHeroLayout(props) {
 					}}
 				/>
 				<Background sx={sxBackground} />
+				<Link href='/' color='secondary'>
+					Go Back to the home page
+				</Link>
 			</Container>
 		</ProductHeroLayoutRoot>
 	);
