@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import Button from '@mui/material/Button';
+
 export default function SearchButton({ handleSearch }) {
 	return (
 		<div>

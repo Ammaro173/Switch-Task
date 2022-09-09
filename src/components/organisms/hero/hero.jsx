@@ -6,7 +6,7 @@ import axios from 'axios';
 
 import SearchField from '../../atoms/searchField/searchField.jsx';
 import SearchButton from '../../atoms/button/searchButton';
-import ControlledOpenSelect from '../../atoms/dropList/booksCount';
+import ControlledOpenSelect from '../../atoms/dropList/ControlledOpenSelect';
 
 const backgroundImage = 'https://today.duke.edu/sites/default/files/styles/story_hero/public/Photo%207%20HERO_0.jpg?itok=Jf51DMuU';
 
@@ -15,34 +15,52 @@ export default function ProductHero() {
 	const [searchKey, setSearchKey] = useState();
 	const [query, setQuery] = useState('javascript');
 	const [booksCount, setBooksCount] = useState(10);
-	const [sortKey, setSortKey] = useState(); // from google api order by relevance or by newest
-	const [infoIcon, setInfoIcon] = useState(' ');
+	const [orderBy, setOrderBy] = useState('relevance'); // from google api order by relevance or by newest
+	const [sortBy, setSortBy] = useState('title');
+	// const [infoIcon, setInfoIcon] = useState(' ');
 	const [show, setShow] = useState(false);
 
 	useEffect(() => {
 		if (show) {
 			axios
-				.get(`https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=${booksCount}&key=AIzaSyAqV-Z1VA-HOc98PyWNaG__gsPF0RaKEYk`)
+				.get(
+					`https://www.googleapis.com/books/v1/volumes?q=${query}+${sortBy}:${query}&orderBy=${orderBy}&maxResults=${booksCount}&key=AIzaSyAqV-Z1VA-HOc98PyWNaG__gsPF0RaKEYk`
+				)
 				.then((res) => {
 					console.log(res.data.items);
-					console.log(query, booksCount);
+					console.log(query, booksCount, orderBy, sortBy);
 					setData(res.data.items);
 				})
 				.catch((err) => {
 					console.log(err);
 				});
 		}
-	}, [query, booksCount, show]);
+	}, [query, booksCount, show, orderBy, sortBy]);
 
 	const handleSearch = (e) => {
+		if (booksCount === undefined) {
+			setBooksCount(10);
+		}
+		if (orderBy === undefined) {
+			setOrderBy('relevance');
+		}
+		if (sortBy === undefined) {
+			setSortBy('title');
+		}
 		e.preventDefault();
 		setQuery(searchKey);
 		setShow(true);
 	};
 
 	const handleBooks = (e) => {
-		// console.log(rows);
 		setBooksCount(e.target.value);
+	};
+	const handleOrderBy = (e) => {
+		setOrderBy(e.target.value);
+	};
+	const handleSortBy = (e) => {
+		console.log(sortBy);
+		setSortBy('in' + e.target.value);
 	};
 
 	const handleChange = (e) => {
@@ -71,33 +89,12 @@ export default function ProductHero() {
 
 				<SearchButton handleSearch={handleSearch} />
 
-				<ControlledOpenSelect books={booksCount} handleBooks={handleBooks} />
+				<ControlledOpenSelect key={'books'} id={'books'} forWho={'books'} books={booksCount} handleBooks={handleBooks} />
+				<ControlledOpenSelect key={'orderBy'} id={'orderBy'} forWho={'orderBy'} orderBy={orderBy} handleOrderBy={handleOrderBy} />
+				<ControlledOpenSelect key={'sortBy'} id={'sortBy'} forWho={'sortBy'} sortBy={sortBy} handleSortBy={handleSortBy} />
 			</ProductHeroLayout>
 
 			{show && <BooksRenderList data={data} />}
 		</>
 	);
-}
-
-{
-	/* 
-			<Typography color='inherit' align='center' variant='h2' marked='center'>
-				Upgrade your Sundays
-			</Typography>
-			<Typography color='inherit' align='center' variant='h5' sx={{ mb: 4, mt: { sx: 4, sm: 10 } }}>
-				Enjoy secret offers up to -70% off the best luxury hotels every Sunday.
-			</Typography>
-			<Button
-				color='secondary'
-				variant='contained'
-				size='large'
-				component='a'
-				href='/premium-themes/onepirate/sign-up/'
-				sx={{ minWidth: 200 }}
-			>
-				Register
-			</Button>
-			<Typography variant='body2' color='inherit' sx={{ mt: 2 }}>
-				Discover the experience
-			</Typography> */
 }

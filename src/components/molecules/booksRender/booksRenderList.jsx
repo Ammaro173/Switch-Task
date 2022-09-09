@@ -24,12 +24,13 @@ export default function BooksRenderList({ data }) {
 			<ImageList sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
 				{data?.map((item) => (
 					<ImageListItem
-						key={item.id}
+						key={item.etag} // changed key from item.id to item.etag cuz some of the api sharing same id... which cause and error
 						cols={2}
 						variant='solid'
 						elevation='6'
 						sx={{ width: 250, marginRight: 10, marginTop: 15, boxShadow: '0px 4px 32px 1px #00000029', borderRadius: '10px' }}
 					>
+						(
 						<Image
 							src={item.volumeInfo.imageLinks?.thumbnail}
 							srcSet={item.volumeInfo.imageLinks?.thumbnail}
@@ -42,6 +43,7 @@ export default function BooksRenderList({ data }) {
 								cursor: 'not-allowed',
 							}}
 						/>
+						)
 						<ImageListItemBar
 							title={`Title : ${item.volumeInfo.title}`}
 							subtitle={`Author : ${item.volumeInfo.authors}`}
