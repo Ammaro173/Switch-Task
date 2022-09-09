@@ -26,7 +26,7 @@ Creating a React app that displays a UI for searching books using Google Books A
 
 - to run file `npm run dev` since im using NextJs
 
-- also check it deployed on netlify by navigating to <https://.netlify.app/>
+- also check it deployed on netlify by navigating to <https://radiant-pika-6af3d5.netlify.app/>
 
 ### Landing page
 

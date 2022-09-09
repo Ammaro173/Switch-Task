@@ -19,6 +19,7 @@
     "@mui/icons-material": "latest",
     "@mui/material": "latest",
     "axios": "^0.27.2",
+    "dotenv": "^16.0.2",
     "next": "latest",
     "prop-types": "latest",
     "react": "latest",

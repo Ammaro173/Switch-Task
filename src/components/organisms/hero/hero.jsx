@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import ProductHeroLayout from '../../atoms/hero/heroLayout';
 import BooksRenderList from '../../molecules/booksRender/booksRenderList';
 import axios from 'axios';
-
+// require('dotenv').config();
 import SearchField from '../../atoms/searchField/searchField.jsx';
 import SearchButton from '../../atoms/button/searchButton';
 import ControlledOpenSelect from '../../atoms/dropList/ControlledOpenSelect';
@@ -24,7 +24,7 @@ export default function ProductHero() {
 		if (show) {
 			axios
 				.get(
-					`https://www.googleapis.com/books/v1/volumes?q=${query}+${sortBy}:${query}&orderBy=${orderBy}&maxResults=${booksCount}&key=AIzaSyAqV-Z1VA-HOc98PyWNaG__gsPF0RaKEYk`
+					`https://www.googleapis.com/books/v1/volumes?q=${query}+${sortBy}:${query}&orderBy=${orderBy}&maxResults=${booksCount}&key=${process.env.KEY}`
 				)
 				.then((res) => {
 					console.log(res.data.items);
