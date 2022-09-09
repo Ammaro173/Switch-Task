@@ -1,45 +1,41 @@
-# Next.js example
+# Front-End Switch Task
 
-## How to use
+## Author: Ammar Abul-Feilat
 
-Download the example [or clone the repo](https://github.com/mui/material-ui):
+## overview
 
-<!-- #default-branch-switch -->
+Creating a React app that displays a UI for searching books using Google Books API. Using `React` with `Nextjs` and `Material-UI`. Following the `Atomic Design` principles; The name Atomic Design comes from the idea of separating the components in atoms, molecules, organisms, templates and pages, Many components Have been made once but rendered multiple times by passing different props each time rendered in a page.
 
-```sh
-curl https://codeload.github.com/mui/material-ui/tar.gz/master | tar -xz --strip=2  material-ui-master/examples/nextjs
-cd nextjs
-```
+## Architecture
 
-Install it and run:
+- ES6 ( ECMAScript 6)
+- "react": "^18.0.0",
+- "react-dom": "^18.0.0",
+- "react-router-dom": "^6.3.0",
+- NextJs : "^@latest"
 
-```sh
-npm install
-npm run dev
-```
+- also check out Package.json file for more info.
 
-or:
+## Run the Project
 
-<!-- #default-branch-switch -->
+- clone the repo && change directory to the repo
 
-[![Edit on StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/mui/material-ui/tree/master/examples/nextjs)
+- run `yarn install` or `npm install`
 
-[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/mui/material-ui/tree/master/examples/nextjs)
+- open the browser and navigate to `http://localhost:3000` to change the port you can specify `yarn dev --port <port number>` or go to package.json change the port
 
-## The idea behind the example
+- to run file `npm run dev` since im using NextJs
 
-The project uses [Next.js](https://github.com/vercel/next.js), which is a framework for server-rendered React apps.
-It includes `@mui/material` and its peer dependencies, including `emotion`, the default style engine in MUI v5.
-If you prefer, you can [use styled-components instead](https://mui.com/material-ui/guides/interoperability/#styled-components).
+- also check it deployed on netlify by navigating to <https://.netlify.app/>
 
-## The link component
+### Landing page
 
-The [example folder](https://github.com/mui/material-ui/tree/HEAD/examples/nextjs-with-typescript) provides an adapter for the use of [Next.js's Link component](https://nextjs.org/docs/api-reference/next/link) with MUI.
-More information [in the documentation](https://mui.com/material-ui/guides/routing/#next-js).
+![landing](./public/LandingPage.jpg)
 
-## What's next?
+### Main Page
 
-<!-- #default-branch-switch -->
+![Main](./public/searchPage.JPG)
 
-You now have a working example project.
-You can head back to the documentation, continuing browsing it from the [templates](https://mui.com/material-ui/getting-started/templates/) section.
+in Main page you can find your searched books and sort them based on author or title , also you get the option to click on a book and have a preview of it at `books.google.com` also you can sort by newest added books and choose how many books to show on each search.
+
+all the drop lists(like: order By / sort By ) will dynamically change the results without you typing the query repeatedly.

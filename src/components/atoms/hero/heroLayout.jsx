@@ -10,9 +10,9 @@ const ProductHeroLayoutRoot = styled('section')(({ theme }) => ({
 	display: 'flex',
 	alignItems: 'center',
 	[theme.breakpoints.up('sm')]: {
-		height: '65vh',
-		minHeight: 500,
-		maxHeight: 1200,
+		height: '73vh',
+		minHeight: 600,
+		maxHeight: 800,
 	},
 }));
 
