@@ -39,3 +39,10 @@ Creating a React app that displays a UI for searching books using Google Books A
 in Main page you can find your searched books and sort them based on author or title , also you get the option to click on a book and have a preview of it at `books.google.com` also you can sort by newest added books and choose how many books to show on each search.
 
 all the drop lists(like: order By / sort By ) will dynamically change the results without you typing the query repeatedly.
+
+<br/>
+<hr/>
+
+## 404 Page Not Found
+
+![err](./public/err.jpg)
